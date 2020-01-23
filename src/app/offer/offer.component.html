@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+      <div class="table-holder">
+          <mat-form-field>
+              <input type="text" (keyup)="searchOffer($event.target.value)" matInput placeholder="Search Offer">
+          </mat-form-field>
+        <mat-table [dataSource]="offersDataSource"    class="mat-elevation-z8">
+
+          <ng-container matColumnDef="id">
+            <mat-header-cell   *matHeaderCellDef> Id </mat-header-cell>
+            <mat-cell *matCellDef="let element let rowIndex = index"> {{ element.id
+              }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <mat-header-cell   *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element let rowIndex = index"> {{ element.name
+              }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="contractEndDate">
+            <mat-header-cell   *matHeaderCellDef> Contract End Date </mat-header-cell>
+            <mat-cell *matCellDef="let element let rowIndex = index"> {{ element.contractEndDate
+              }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="contractStartDate">
+              <mat-header-cell   *matHeaderCellDef> Contract Start Date </mat-header-cell>
+              <mat-cell *matCellDef="let element let rowIndex = index"> {{ element.contractStartDate
+                }} </mat-cell>
+            </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        </mat-table>
+      </div>
+    </div>
+  </div>

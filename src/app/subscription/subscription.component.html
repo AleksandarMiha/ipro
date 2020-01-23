@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="table-holder">
+        <mat-form-field>
+            <input type="text" (keyup)="searchSubscription($event.target.value)" matInput placeholder="Search Subscription">
+        </mat-form-field>
+      <mat-table [dataSource]="subscriptionDataSource" matSort   class="mat-elevation-z8">
+
+        <ng-container matColumnDef="id">
+          <mat-header-cell mat-sort-header *matHeaderCellDef> Id </mat-header-cell>
+          <mat-cell *matCellDef="let element let rowIndex = index"> {{ element.id
+            }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell mat-sort-header *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element let rowIndex = index"> {{ element.name
+            }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+          <mat-header-cell mat-sort-header *matHeaderCellDef> Type </mat-header-cell>
+          <mat-cell *matCellDef="let element let rowIndex = index"> {{ element.type
+            }} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </mat-table>
+    </div>
+  </div>
+</div>
