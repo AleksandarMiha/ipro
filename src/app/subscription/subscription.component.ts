@@ -12,7 +12,6 @@ export class SubscriptionComponent implements OnInit {
   public allSubscription: any[] = [];
   displayedColumns: string[] = ['id', 'name', 'type'];
   subscriptionDataSource  = new MatTableDataSource(this.allSubscription);
-  // @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatSort, { read: true }) sort: MatSort
 
 

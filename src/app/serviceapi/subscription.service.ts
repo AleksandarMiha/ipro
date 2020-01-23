@@ -12,5 +12,4 @@ export class SubscriptionService {
     const endpoint = `${this._BASE_URL}/100/subscriptions`;
     return this.http.get(endpoint);
   }
-
 }
