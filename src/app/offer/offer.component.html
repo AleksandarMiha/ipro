@@ -4,7 +4,7 @@
           <mat-form-field>
               <input type="text" (keyup)="searchOffer($event.target.value)" matInput placeholder="Search Offer">
           </mat-form-field>
-        <mat-table [dataSource]="offersDataSource"    class="mat-elevation-z8">
+        <mat-table [hidden]="!isTableHasData" [dataSource]="offersDataSource"    class="mat-elevation-z8">
 
           <ng-container matColumnDef="id">
             <mat-header-cell   *matHeaderCellDef> Id </mat-header-cell>
@@ -30,10 +30,26 @@
                 }} </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="delete">
+                <mat-header-cell   *matHeaderCellDef> Delete Offer </mat-header-cell>
+                <mat-cell *matCellDef="let element let rowIndex = index"> <button  mat-raised-button color="warn" (click)="deleteOffer(rowIndex)">delete</button> </mat-cell>
+              </ng-container>
+
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
         </mat-table>
+
+        <mat-card *ngIf="isLoading" class="spinner" >
+            <mat-progress-spinner
+              color="primary"
+              mode="indeterminate">
+            </mat-progress-spinner>
+        </mat-card>
+
+        <div [hidden]="isTableHasData" class="no-data">
+            Oooops no data found.
+        </div>
       </div>
     </div>
   </div>

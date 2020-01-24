@@ -10,7 +10,7 @@ import { OfferComponent } from './offer/offer.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { HomeComponent } from './home/home.component';
 import { MatTableModule } from '@angular/material/table';
-import { MatSortModule, MatInputModule } from '@angular/material';
+import { MatSortModule, MatInputModule, MatToolbarModule, MatProgressSpinnerModule, MatCardModule  } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { MatSortModule, MatInputModule } from '@angular/material';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule, MatButtonModule, MatTableModule, MatSortModule, MatInputModule
+    BrowserAnimationsModule, MatButtonModule, MatTableModule, MatSortModule, MatInputModule, MatToolbarModule, MatProgressSpinnerModule, MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

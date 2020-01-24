@@ -10,8 +10,10 @@ import { MatTableDataSource, MatSort } from "@angular/material";
 export class OfferComponent implements OnInit {
 
   public allOfers: [] = [];
-  displayedColumns: string[] = ['id', 'name', 'contractEndDate', 'contractStartDate'];
+  displayedColumns: string[] = ['id', 'name', 'contractEndDate', 'contractStartDate', 'delete'];
   offersDataSource  = new MatTableDataSource(this.allOfers);
+  isTableHasData: boolean = true;
+  isLoading: boolean = true;
   constructor(private offer: OfferService) { }
 
   ngOnInit() {
@@ -20,14 +22,29 @@ export class OfferComponent implements OnInit {
 
   getOffer(){
     this.offer.getOffers().subscribe((data:any)=> {
+      this.isLoading = false;
       this.allOfers = data.offers;
       this.offersDataSource.data = this.allOfers;
       console.log(this.allOfers);
-    })
+    }), error => this.isLoading = false
   }
 
   searchOffer(filterValue: string){
     this.offersDataSource.filter = filterValue.trim().toLocaleLowerCase();
+    if(this.offersDataSource.filteredData.length > 0){
+      this.isTableHasData = true;
+    } else {
+      this.isTableHasData = false;
+    }
+  }
+  //this is should be index of row in database but for this situation i need this.
+  deleteOffer(indexOfRow) {
+    // this.offersDataSource.data.splice(indexOfRow, 1);
+    if(window.confirm('Are sure you want to delete this offer ?')){
+    const data = this.offersDataSource.data;
+    data.splice(indexOfRow, 1);
+    this.offersDataSource.data = data;
+    }
   }
 
 }

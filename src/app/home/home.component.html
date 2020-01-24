@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <h1>Choose offer or subscription</h1>
   </div>
@@ -6,4 +6,14 @@
     <button  routerLink="/offer" mat-raised-button color="primary">Check available offers</button>
     <button routerLink="/subscription" mat-raised-button color="primary">Check available subscription</button>
   </div>
-</div>
+</div> -->
+
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div class="link-holder">
+      <div  routerLink="/offer"><span>Offers</span></div>
+      <div routerLink="/subscription"><span>Subscriptions</span></div>
+  </div>
+  </mat-toolbar-row>
+</mat-toolbar>
